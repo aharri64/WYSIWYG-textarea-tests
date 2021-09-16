@@ -1,4 +1,5 @@
 [source](https://www.jqueryscript.net/text/Rich-Text-Editor-jQuery-RichText.html)
+[demo](https://www.jqueryscript.net/demo/Rich-Text-Editor-jQuery-RichText/)
 
 Just another jQuery implementation of the WYSIWYG rich text editor that uses Font Awesome Iconic Font for the editor icons. Licensed under the AGPL-3.0.
 
