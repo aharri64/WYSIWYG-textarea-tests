@@ -1,5 +1,7 @@
 # jQuery WYSIWYG Rich Text Editor Plugin - Froala Editor
 
+**This one is really powerful but also pretty complicated.**
+
 [source](https://www.jqueryscript.net/text/jQuery-WYSIWYG-Rich-Text-Editor-Plugin-Froala-Editor.html)
 [demo](https://www.jqueryscript.net/demo/jQuery-WYSIWYG-Rich-Text-Editor-Plugin-Froala-Editor/)
 
