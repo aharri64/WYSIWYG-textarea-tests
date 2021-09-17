@@ -1,314 +1,283 @@
 [source](https://www.jqueryscript.net/text/Rich-Text-Editor-jQuery-RichText.html)
 [demo](https://www.jqueryscript.net/demo/Rich-Text-Editor-jQuery-RichText/)
 
-Just another jQuery implementation of the WYSIWYG rich text editor that uses Font Awesome Iconic Font for the editor icons. Licensed under the AGPL-3.0.
+## Requirements
 
-How to use it:
+-   [jQuery](https://jquery.com/) (v.3+, v.3.2+ recommended)
+-   FontAwesome ([v.4.7.0](https://fontawesome.com/v4.7.0/) / [v.5+](https://fontawesome.com/))
+-   `src/jquery.richtext.min.js`
+-   `src/richtext.min.css`
 
-1. Load the required Font Awesome 4:
+## Demo
 
-1
+To see the latest demo version, you might want to use the following URL:
+[Demo from htmlpreview.github.io](https://htmlpreview.github.io/?https://github.com/webfashionist/RichText/blob/master/examples/index.html)
 
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-2. Load the richtext.min.css to style the editor.
+## Initialize editor
 
-1
+Simply call `.richText()` on your `jQuery('textarea')` or `jQuery('input')` field (other HTML tags are allowed as well, but not recommended).
 
-<link rel="stylesheet" href="richtext.min.css">
-3. Load JQuery library and the richtext.min.js at the end of the webpage.
+## Options
 
-1
+`.richText()` allows several options to be set, the default option object is:
 
-<link rel="stylesheet" href="richtext.min.css">
-4. Create a normal textarea element for the editor.
+```javascript
+$(element).richText({
+    // text formatting
+    bold: true,
+    italic: true,
+    underline: true,
 
-1
-<textarea class="content" name="example"></textarea> 5. Calling the plugin will transform the textarea element into a basic WYSIWYG rich text editor.
+    // text alignment
+    leftAlign: true,
+    centerAlign: true,
+    rightAlign: true,
+    justify: true,
 
-1
-$('.content').richText(); 6. Customize the editor by overriding the following parameter options.
+    // lists
+    ol: true,
+    ul: true,
 
-001
-$('.content').richText({
-002
-// text formatting
-003
-bold:true,
-004
-italic:true,
-005
-underline:true,
-006
+    // title
+    heading: true,
 
-007
-// text alignment
-008
-leftAlign:true,
-009
-centerAlign:true,
-010
-rightAlign:true,
-011
-justify:true,
-012
+    // fonts
+    fonts: true,
+    fontList: [
+        "Arial",
+        "Arial Black",
+        "Comic Sans MS",
+        "Courier New",
+        "Geneva",
+        "Georgia",
+        "Helvetica",
+        "Impact",
+        "Lucida Console",
+        "Tahoma",
+        "Times New Roman",
+        "Verdana",
+    ],
+    fontColor: true,
+    fontSize: true,
 
-013
-// lists
-014
-ol:true,
-015
-ul:true,
-016
+    // uploads
+    imageUpload: true,
+    fileUpload: true,
 
-017
-// title
-018
-heading:true,
-019
+    // media
+    videoEmbed: true,
 
-020
-// fonts
-021
-fonts:true,
-022
-fontList: ["Arial",
-023
-"Arial Black",
-024
-"Comic Sans MS",
-025
-"Courier New",
-026
-"Geneva",
-027
-"Georgia",
-028
-"Helvetica",
-029
-"Impact",
-030
-"Lucida Console",
-031
-"Tahoma",
-032
-"Times New Roman",
-033
-"Verdana"
-034
-],
-035
-fontColor:true,
-036
-fontSize:true,
-037
+    // link
+    urls: true,
 
-038
-// uploads
-039
-imageUpload:true,
-040
-fileUpload:true,
-041
+    // tables
+    table: true,
 
-042
-// media
-043
-<a href="https://www.jqueryscript.net/tags.php?/video/">video</a>Embed:true,
-044
+    // code
+    removeStyles: true,
+    code: true,
 
-045
-// link
-046
-urls:true,
-047
+    // colors
+    colors: [],
 
-048
-// tables
-049
-table:true,
-050
+    // dropdowns
+    fileHTML: "",
+    imageHTML: "",
 
-051
-// code
-052
-removeStyles:true,
-053
-code:true,
-054
+    // translations
+    translations: {
+        title: "Title",
+        white: "White",
+        black: "Black",
+        brown: "Brown",
+        beige: "Beige",
+        darkBlue: "Dark Blue",
+        blue: "Blue",
+        lightBlue: "Light Blue",
+        darkRed: "Dark Red",
+        red: "Red",
+        darkGreen: "Dark Green",
+        green: "Green",
+        purple: "Purple",
+        darkTurquois: "Dark Turquois",
+        turquois: "Turquois",
+        darkOrange: "Dark Orange",
+        orange: "Orange",
+        yellow: "Yellow",
+        imageURL: "Image URL",
+        fileURL: "File URL",
+        linkText: "Link text",
+        url: "URL",
+        size: "Size",
+        responsive: "Responsive",
+        text: "Text",
+        openIn: "Open in",
+        sameTab: "Same tab",
+        newTab: "New tab",
+        align: "Align",
+        left: "Left",
+        center: "Center",
+        right: "Right",
+        rows: "Rows",
+        columns: "Columns",
+        add: "Add",
+        pleaseEnterURL: "Please enter an URL",
+        videoURLnotSupported: "Video URL not supported",
+        pleaseSelectImage: "Please select an image",
+        pleaseSelectFile: "Please select a file",
+        bold: "Bold",
+        italic: "Italic",
+        underline: "Underline",
+        alignLeft: "Align left",
+        alignCenter: "Align centered",
+        alignRight: "Align right",
+        addOrderedList: "Add ordered list",
+        addUnorderedList: "Add unordered list",
+        addHeading: "Add Heading/title",
+        addFont: "Add font",
+        addFontColor: "Add font color",
+        addFontSize: "Add font size",
+        addImage: "Add image",
+        addVideo: "Add video",
+        addFile: "Add file",
+        addURL: "Add URL",
+        addTable: "Add table",
+        removeStyles: "Remove styles",
+        code: "Show HTML code",
+        undo: "Undo",
+        redo: "Redo",
+        close: "Close",
+    },
 
-055
-// colors
-056
-colors: [],
-057
+    // privacy
+    youtubeCookies: false,
 
-058
-// dropdowns
-059
-fileHTML:'',
-060
-imageHTML:'',
-061
-
-062
-// translations
-063
-translations: {
-064
-'title':'Title',
-065
-'white':'White',
-066
-'black':'Black',
-067
-'brown':'Brown',
-068
-'beige':'Beige',
-069
-'darkBlue':'Dark Blue',
-070
-'blue':'Blue',
-071
-'lightBlue':'Light Blue',
-072
-'darkRed':'Dark Red',
-073
-'red':'Red',
-074
-'darkGreen':'Dark Green',
-075
-'green':'Green',
-076
-'purple':'Purple',
-077
-'darkTurquois':'Dark Turquois',
-078
-'turquois':'Turquois',
-079
-'darkOrange':'Dark Orange',
-080
-'orange':'Orange',
-081
-'yellow':'Yellow',
-082
-'imageURL':'Image URL',
-083
-'fileURL':'File URL',
-084
-'linkText':'Link text',
-085
-'url':'URL',
-086
-'size':'Size',
-087
-'responsive':'<a href="https://www.jqueryscript.net/tags.php?/Responsive/">Responsive</a>',
-088
-'text':'Text',
-089
-'openIn':'Open in',
-090
-'sameTab':'Same tab',
-091
-'newTab':'New tab',
-092
-'align':'Align',
-093
-'left':'Left',
-094
-'justify':'Justify',
-095
-'center':'Center',
-096
-'right':'Right',
-097
-'rows':'Rows',
-098
-'columns':'Columns',
-099
-'add':'Add',
-100
-'pleaseEnterURL':'Please enter an URL',
-101
-'videoURLnotSupported':'Video URL not supported',
-102
-'pleaseSelectImage':'Please select an image',
-103
-'pleaseSelectFile':'Please select a file',
-104
-'bold':'Bold',
-105
-'italic':'Italic',
-106
-'underline':'Underline',
-107
-'alignLeft':'Align left',
-108
-'alignCenter':'Align centered',
-109
-'alignRight':'Align right',
-110
-'addOrderedList':'Add ordered list',
-111
-'addUnorderedList':'Add unordered list',
-112
-'addHeading':'Add Heading/title',
-113
-'addFont':'Add font',
-114
-'addFontColor':'Add font color',
-115
-'addFontSize':'Add font size',
-116
-'addImage':'Add image',
-117
-'addVideo':'Add video',
-118
-'addFile':'Add file',
-119
-'addURL':'Add URL',
-120
-'addTable':'Add table',
-121
-'removeStyles':'Remove styles',
-122
-'code':'Show HTML code',
-123
-'undo':'Undo',
-124
-'redo':'Redo',
-125
-'close':'Close'
-126
-},
-127
-
-128
-// privacy
-129
-youtubeCookies:false,
-130
-
-131
-// dev settings
-132
-useSingleQuotes:false,
-133
-height: 0,
-134
-heightPercentage: 0,
-135
-id:"",
-136
-class:"",
-137
-useParagraph:false,
-138
-maxlength: 0,
-139
-
-140
-// callback function after init
-141
-callback: undefined
-142
+    // developer settings
+    useSingleQuotes: false,
+    height: 0,
+    heightPercentage: 0,
+    id: "",
+    class: "",
+    useParagraph: false,
+    maxlength: 0,
+    callback: undefined,
+    useTabForNext: false,
 });
+```
+
+**Text formatting**
+
+-   `bold` (default: `(boolean) true`) :: Defines if the bold button should be displayed in the editor toolbar
+-   `italic` (default: `(boolean) true`) :: Defines if the italic button should be displayed
+-   `underline` (default: `(boolean) true`) :: Displays the underline button
+
+**Fonts**
+
+-   `fonts` (default: `(boolean) true`) :: Enables font formatting
+-   `fontList` :: Array of allowed fonts. The fonts set by default are fonts which should work on Windows, Mac and Linux by default. Setting fonts manually will overwrite the array.
+-   `fontSize` (default: `(boolean) true`) :: Allows to use different font sizes
+
+**Text alignment**
+
+-   `leftAlign` (default: `(boolean) true`)
+-   `centerAlign` (default: `(boolean) true`)
+-   `rightAlign` (default: `(boolean) true`)
+-   `justify` (default: `(boolean) true`)
+
+**Lists**
+
+-   `ol` (default: `(boolean) true`) :: Ordered list
+-   `ul` (default: `(boolean) true`) :: Unordered list
+
+**Titles**
+
+-   `heading` (default: `(boolean) true`)
+
+**Colors**
+
+-   `fontColor` (default: `(boolean) true`)
+-   `colors` :: Set own colors for the editor. They will replace the default colors. Example:
+
+```javascript
+var colors;
+colors["#FFFFFF"] = "White";
+colors["#000000"] = "Black";
+```
+
+**Uploads/Files**
+
+-   `imageUpload` (default: `(boolean) true`)
+-   `fileUpload` (default: `(boolean) true`)
+
+**Media/Videos**
+
+-   `videoEmbed` (default: `(boolean) true`) :: Simplify embedding videos from YouTube, Facebook, Vimeo and Dailymotion
+
+**Links**
+
+-   `urls` (default: `(boolean) true`)
+
+**Tables**
+
+-   `table` (default: `(boolean) true`)
+
+**Code**
+
+-   `removeStyles` (default: `(boolean) true`) :: Allows to remove the CSS styles from the selection
+-   `code` (default: `(boolean) true`) :: Allows to display the raw HTML code
+
+**Custom dropdowns**
+
+Custom dropdowns allow to customize in a restricted way the dropdowns in the editor.
+
+-   `fileHTML` :: HTML string of the file dropdown. MUST include an input field (`select`, `input` or `textarea`) with the `id` equal to `fileURL`.
+-   `imageHTML` :: HTML string of the image dropdown. MUST include an input field (`select`, `input` or `textarea`) with the `id` equal to `imageURL`.
+
+**Translations**
+
+-   `translations` :: An object of key-value entries allowing to set other texts/translations for the editor. The keys must stay the same as in the default translation object.
+
+**Privacy settings**
+
+-   `youtubeCookies` (default: `(boolean) false`) :: If set to true, YouTube might set tracking cookies. By default (if the value is set to `false`), `youtube-nocookie.com` will be used to display YouTube videos.
+
+**Tabbing**
+
+-   `useTabForNext` (default: `(boolean) false`) :: If set to true, you can tab to the next input element or RichText editor within the `contenteditable` part of the editor.
+
+**Developer settings**
+
+-   `useSingleQuotes` (default: `(boolean) false`) :: Replaces all double quotes from HTML attributes to single quotes, if set to `(boolean) true`.
+-   `height` (default: `(int) 0`) :: Sets a custom height for the editor frame and code view. The default value `0` uses the initial height set with CSS. To overwrite the height without using this setting (and without using inline CSS), use the CSS selectors `.richText .richText-editor` and `.richText .richText-initial` to change the height.
+-   `heightPercentage` (default: `(int) 0`) :: Sets a custom percentage height based on the editor's parent element. This won't work if the `height` option is used as well.
+-   `id` (default: `(string) ""`) :: Sets a custom ID for the editor
+-   `class` (default: `(string) ""`) :: Sets additional custom classes for the editor
+-   `useParagraph` (default: `(boolean) false`) :: Uses paragraph tags instead of div containers (browser default) when pressing ENTER, if set to `true`.
+-   `maxlength` (default: `(int) 0`) :: Defines a max length for the text (HTML length not considered!). The default value `0` doesn't define any limit
+-   `callback` (default: `undefined`) :: Sets a callback if the editor has been loaded. The first and only parameter of the callback contains the jQuery element of the editor
+
+## Undo RichText
+
+There's now the possibility to undo the RichText editor to the state before `.richText()` has been called.
+
+For this to work, simply call `.unRichText()` on the initial textarea, on which `.richText()` has previously been called.
+
+It is possible to delay `unRichText()` by a given amount of milliseconds with the parameter: `{delay: 2000}`.
+Additionally the `callback` option is available as well.
+
+## FAQ
+
+**How do I set the RichText value through jQuery? Using `.val()` doesn't work?**
+
+The `change` event needs to be triggered, in order to update the value within RichText.
+Using `.val('Some text').trigger('change')` on your jQuery node will solve your issue.
+
+## Contributing
+
+If you have any ideas, suggestions, issues or bugfixes, feel free to contribute.
+
+Check out the [contributing guidelines](CONTRIBUTING.md) for ways to offer feedback and contribute.
+
+## Planned changes
+
+-   Add/remove columns/cells in table after it was created
